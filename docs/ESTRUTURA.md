@@ -11,21 +11,23 @@ SDD/
 ├── INSTALAR_SDD.md              # ⭐ Arquivo principal de instalação
 ├── VERSION.md                   # Controle de versão
 │
-├── agents/                      # Agentes especializados (5 arquivos)
+├── agents/                      # Agentes especializados (6 arquivos)
 │   ├── code-archaeologist.md    # Análise de código legado
 │   ├── debugger.md              # Debugging sistemático
 │   ├── documentation-writer.md  # Documentação técnica
+│   ├── explorer-agent.md        # Exploração e análise de codebase
 │   ├── frontend-specialist.md   # Frontend Angular 17+
 │   └── mobile-developer.md      # React Native e Flutter
 │
-├── commands/                    # Skills/Commands (7 arquivos)
+├── commands/                    # Skills/Commands (8 arquivos)
 │   ├── doc.md                   # Geração de documentação
 │   ├── card.md                  # Criação de User Stories
 │   ├── pr.md                    # Padrões de Pull Request
 │   ├── revisar.md               # Revisão de código
 │   ├── implementar.md           # Implementação de features
 │   ├── arquitetura.md           # Diretrizes arquiteturais
-│   └── debuggar.md              # Debugging sistemático
+│   ├── debuggar.md              # Debugging sistemático
+│   └── explorar.md              # Exploração e análise de codebase
 │
 ├── templates/                   # Templates de documentos (8 arquivos)
 │   ├── PADROES_ARQUITETURA.md   # Padrões arquiteturais (EXPANDIDO)
@@ -83,6 +85,10 @@ SDD/
 **Propósito:** Desenvolvimento mobile
 **Use para:** React Native, Flutter, navegação mobile
 
+#### explorer-agent.md
+**Propósito:** Exploração avançada de codebase e análise arquitetural
+**Use para:** Mapear projetos novos, auditorias, análise de viabilidade, refatorações complexas
+
 ---
 
 ### commands/
@@ -110,6 +116,10 @@ SDD/
 #### debuggar.md
 **Use:** `/debuggar`
 **Ação:** Debugging sistemático (usa debugger agent)
+
+#### explorar.md
+**Use:** `/explorar`
+**Ação:** Exploração e análise de codebase (usa explorer-agent)
 
 #### arquitetura.md
 **Use:** `/arquitetura`
