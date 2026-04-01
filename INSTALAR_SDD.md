@@ -98,6 +98,7 @@ Copiar todos os `.md` de `agents/` para `.claude/agents/`:
 - `documentation-writer.md` - Documentação técnica
 - `frontend-specialist.md` - Frontend Angular 17+
 - `mobile-developer.md` - React Native e Flutter
+- `explorer-agent.md` - Exploração avançada de codebase, auditorias e análise de viabilidade
 
 ### ETAPA 5: Copiar Commands
 
@@ -110,6 +111,7 @@ Copiar todos os `.md` de `commands/` para `.claude/commands/`:
 - `implementar.md` - Implementação de features (baseado em referência)
 - `arquitetura.md` - Diretrizes arquiteturais
 - `debuggar.md` - Debugging sistemático
+- `explorar.md` - Exploração e análise de codebase
 
 ### ETAPA 6: Gerar Documentos de Contexto
 
@@ -208,8 +210,8 @@ Verificar criação de todos os arquivos e relatar:
 
 | Pasta | Arquivos | Status |
 |-------|----------|--------|
-| .claude/agents/ | 5 agentes | ✅ |
-| .claude/commands/ | 7 commands | ✅ |
+| .claude/agents/ | 6 agentes | ✅ |
+| .claude/commands/ | 8 commands | ✅ |
 | .claude/CONTEXT/ | 9 documentos | ✅ |
 
 ### 🎯 Stack Detectada: {{STACK_PRINCIPAL}}
@@ -225,6 +227,7 @@ Verificar criação de todos os arquivos e relatar:
 | /implementar | Implementar features |
 | /arquitetura | Diretrizes arquiteturais |
 | /debuggar | Debugging sistemático |
+| /explorar | Exploração e análise de codebase |
 
 ### 📚 Contexto Disponível:
 

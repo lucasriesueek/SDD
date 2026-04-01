@@ -44,8 +44,8 @@ Diferente de abordagens tradicionais onde você dá instruções vagas à IA ("c
 
 Após instalar SDD, você terá:
 
-- ✅ **7 commands** para tarefas comuns (`/arquitetura`, `/implementar`, `/revisar`, etc.)
-- ✅ **5 agentes especializados** que a IA pode usar automaticamente
+- ✅ **8 commands** para tarefas comuns (`/arquitetura`, `/implementar`, `/revisar`, etc.)
+- ✅ **6 agentes especializados** que a IA pode usar automaticamente
 - ✅ **8 documentos de contexto** personalizados para sua stack
 - ✅ **Padrões consistentes** em todo o projeto
 
@@ -67,6 +67,7 @@ SDD/ (Pacote de distribuição)
 │   ├── card.md
 │   ├── debuggar.md
 │   ├── doc.md
+│   ├── explorar.md
 │   ├── implementar.md
 │   ├── pr.md
 │   └── revisar.md
@@ -75,6 +76,7 @@ SDD/ (Pacote de distribuição)
 │   ├── code-archaeologist.md
 │   ├── debugger.md
 │   ├── documentation-writer.md
+│   ├── explorer-agent.md
 │   ├── frontend-specialist.md
 │   └── mobile-developer.md
 │
@@ -302,6 +304,39 @@ Ajude a debugar esse bug onde usuários não conseguem fazer login após registr
 
 ---
 
+### 8. /explorar - O Explorador 🔭
+
+**Para quê serve?**
+Exploração avançada de codebase, mapeamento arquitetural, auditorias e análise de viabilidade.
+
+**Quando usar?**
+- Começou em um projeto novo ou desconhecido
+- Precisa mapear dependências e fluxo de dados
+- Quer uma auditoria completa do repositório
+- Precisa avaliar viabilidade de uma feature ou integração
+- Planeja uma refatoração complexa e precisa do mapa atual
+
+**Exemplo prático:**
+```
+/explorar
+Faça uma auditoria completa do projeto e gere um relatório de saúde.
+```
+
+**Você recebe:**
+1. Mapa arquitetural do projeto
+2. Dependências críticas mapeadas
+3. Anti-patterns e vulnerabilidades detectados
+4. Relatório de saúde com recomendações
+
+**Modos especiais:**
+- **Auditoria** — scan completo para vulnerabilidades e anti-patterns
+- **Mapeamento** — mapa estruturado de dependências entre componentes
+- **Viabilidade** — pesquisa rápida se uma feature é possível
+
+**Também disponível como:** explorer-agent (agent automático)
+
+---
+
 ## 4. Agents - Automação da IA
 
 > **🤖 Conceito chave:** Agents são especialistas que a IA usa automaticamente quando acha necessário.
@@ -399,6 +434,23 @@ Quando detecta projeto mobile.
 ```
 "Implemente navegação React Native"
 ```
+
+---
+
+### explorer-agent - O Olho do Sistema
+
+**Para quê serve?**
+Exploração e descoberta avançada de codebase, análise arquitetural profunda, pesquisa de viabilidade.
+
+**Quando a IA usa:**
+Quando precisa entender um projeto novo, mapear dependências, ou investigar a fundo a arquitetura.
+
+**Exemplo de prompt:**
+```
+"Mapeie toda a arquitetura desse projeto e identifique pontos de risco"
+```
+
+**Também disponível como:** `/explorar` (command)
 
 ---
 
