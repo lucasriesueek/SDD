@@ -1,0 +1,11 @@
+{
+  "name": "my-angular-app",
+  "dependencies": {
+    "@angular/core": "^17.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@angular/cli": "^17.3.0",
+    "jest": "^29.0.0"
+  }
+}

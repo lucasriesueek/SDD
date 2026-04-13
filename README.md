@@ -1,21 +1,19 @@
-# SDD - Spec Driven Development
+# SDD-Ueek - Spec Driven Development
 
----
+> CLI tool para configurar AI-ready specs, agents e commands no Claude Code automaticamente.
 
 ## Instalacao Rapida
 
-1. Extraia o arquivo `.zip` do SDD na raiz do seu projeto
-2. Abra o Claude Code na raiz do projeto
-3. Peca ao Claude para executar o instalador com o caminho completo:
-   ```
-   Execute o arquivo INSTALAR_SDD.md que esta na pasta SDD/
-   ```
-   Ou fornea o caminho completo, por exemplo:
-   ```
-   C:\Users\seu-usuario\projeto\SDD\INSTALAR_SDD.md
-   ```
+```bash
+# Via npx (sem instalacao)
+npx sdd-ueek init
 
-O instalador detecta automaticamente sua stack (Angular, React, Node, Python, etc.), gera documentos de contexto personalizados e configura tudo na pasta `.claude/`.
+# Ou instalar globalmente
+npm install -g sdd-ueek
+sdd-ueek init
+```
+
+O CLI detecta automaticamente sua stack (Angular, React, Node, Python, etc.), gera documentos de contexto personalizados e configura tudo na pasta `.claude/`.
 
 ---
 
@@ -27,7 +25,7 @@ Em vez de pedir coisas vagas ao Claude (`"crie um componente"`), voce usa **spec
 
 ### O que acontece apos instalar
 
-O SDD cria dentro de `.claude/`:
+O SDD-Ueek cria dentro de `.claude/`:
 
 | O que | Quantidade | O que faz |
 |-------|-----------|-----------|
@@ -37,13 +35,40 @@ O SDD cria dentro de `.claude/`:
 
 ---
 
+## Uso
+
+### `sdd-ueek init`
+
+Inicializa o SDD no projeto atual com deteccao automatica de stack.
+
+```bash
+sdd-ueek init                  # Instalacao interativa
+sdd-ueek init -y               # Usar valores padrao
+sdd-ueek init --stack angular  # Forcar stack Angular
+sdd-ueek init --no-agents      # Nao instalar agentes
+```
+
+### `sdd-ueek list`
+
+Lista os recursos disponiveis.
+
+```bash
+sdd-ueek list            # Lista tudo
+sdd-ueek list stacks     # Stacks suportadas
+sdd-ueek list templates  # Templates disponiveis
+sdd-ueek list agents     # Agentes disponiveis
+sdd-ueek list commands   # Commands disponiveis
+```
+
+---
+
 ## Commands disponiveis
 
-Voce chama diretamente. Controle total.
+Voce chama diretamente no Claude Code. Controle total.
 
 | Command | O que faz |
 |---------|----------|
-| `/arquitetura` | Mostra padroes do projeto, convenções e exemplos de codigo |
+| `/arquitetura` | Mostra padroes do projeto, convencoes e exemplos de codigo |
 | `/implementar` | Cria feature nova baseada em uma referencia existente |
 | `/revisar` | Revisa codigo antes do commit (seguranca, padroes, performance) |
 | `/card` | Gera User Story com Acceptance Criteria |
@@ -51,15 +76,6 @@ Voce chama diretamente. Controle total.
 | `/doc` | Documenta componentes, servicos, APIs |
 | `/debuggar` | Debugging sistematico com root cause analysis |
 | `/explorar` | Exploracao de codebase, auditorias e analise de viabilidade |
-
-### Exemplo de uso
-
-```
-/implementar
-Crie "gestao de produtos" seguindo o padrao de "gestao de clientes"
-```
-
-O Claude analisa a feature de referencia e replica os mesmos padroes na nova feature.
 
 ---
 
@@ -75,6 +91,12 @@ O Claude ativa automaticamente quando detecta a necessidade.
 | `frontend-specialist` | Trabalho com UI, componentes, Angular/React |
 | `mobile-developer` | Projetos React Native ou Flutter |
 | `explorer-agent` | Exploracao de codebase, auditorias arquiteturais e analise de viabilidade |
+
+---
+
+## Stacks suportadas
+
+Angular 17+, React, Next.js, Vue, Node.js (Express/Fastify/NestJS), Python (FastAPI/Django), Go, Rust, .NET
 
 ---
 
@@ -97,32 +119,6 @@ O Claude ativa automaticamente quando detecta a necessidade.
 
 ---
 
-## Estrutura do pacote SDD
-
-```
-SDD/
-├── INSTALAR_SDD.md          # Instalador automatico
-├── COMO_USAR.md             # Guia completo de uso
-├── README.md                # Este arquivo
-├── VERSION.md               # Controle de versao
-├── commands/                # 8 commands (/arquitetura, /implementar, etc.)
-├── agents/                  # 6 agentes especializados
-├── templates/               # 8 templates de contexto por stack
-└── docs/                    # Documentacao adicional
-    ├── ESTRUTURA.md         # Estrutura detalhada
-    └── PERSONALIZACAO.md    # Como personalizar
-```
-
----
-
-## Stacks suportadas
-
-O instalador detecta automaticamente e gera contexto especifico para:
-
-Angular 17+, React, Next.js, Node.js (Express/Fastify/NestJS), Python (FastAPI/Django), .NET, Rust, Go
-
----
-
 ## Para ir alem
 
 - [COMO_USAR.md](COMO_USAR.md) - Guia completo com exemplos praticos e dicas avancadas
@@ -131,4 +127,16 @@ Angular 17+, React, Next.js, Node.js (Express/Fastify/NestJS), Python (FastAPI/D
 
 ---
 
-**Versao 2.0.0** | SDD Team
+## Desenvolvimento
+
+```bash
+npm install       # Instalar dependencias
+npm run dev       # Rodar em modo dev com tsx
+npm run build     # Compilar com tsup
+npm run test      # Rodar testes com vitest
+npm link          # Criar link global para testar localmente
+```
+
+---
+
+**Versao 2.1.0** | [npm](https://www.npmjs.com/package/sdd-ueek) | SDD Team

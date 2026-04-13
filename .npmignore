@@ -1,0 +1,17 @@
+src/
+tests/
+docs/
+tsconfig.json
+tsup.config.ts
+*.test.ts
+*.spec.ts
+.git/
+.github/
+*.tsbuildinfo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+COMO_USAR.md
+VERSION.md
