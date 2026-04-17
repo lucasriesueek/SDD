@@ -81,6 +81,25 @@ git diff --cached --name-only | grep "\.scss$" | wc -l  # Estilos
 - [ ] **State** - Estado local apropriado vs global
 {{/if}}
 
+{{#if STACK_PRINCIPAL contains "Laravel"}}
+### Laravel + Inertia + React Específico
+
+- [ ] **Contexto correto** - Site ou InternalArea/Admin
+- [ ] **Rota no arquivo correto** - web.php (site) ou internal_area.php (admin)
+- [ ] **Prefixo de rota** - site. ou admin. presente
+- [ ] **SeoApplication** - Presente em páginas públicas
+- [ ] **Sem APIs desnecessárias** - Não criou endpoints JSON para frontend
+- [ ] **Formulários com RHF + Zod** - React Hook Form e Zod configurados
+- [ ] **Tratamento 422** - Errors do backend tratados no frontend
+- [ ] **Toast loading** - Presente em submit de formulários
+- [ ] **Componentes por contexto** - site/ui ou admin/ui (não misturados)
+- [ ] **Models com public_id** - UUID para referências externas
+- [ ] **Migrations com down()** - Rollback possível
+- [ ] **Controller namespace** - Site\ ou InternalArea\Admin\
+- [ ] **Inertia::render** - Usado para páginas (não view())
+- [ ] **No fetch/axios** - Componentes não usam fetch manual
+{{/if}}
+
 ---
 
 ## 🔒 Checklist de Segurança

@@ -1,5 +1,5 @@
 ---
-name: implementar
+name: apartir
 description: Implementa nova feature baseada em feature de referência existente no projeto. Use para manter consistência e seguir padrões estabelecidos.
 ---
 

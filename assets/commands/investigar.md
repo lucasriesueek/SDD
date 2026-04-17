@@ -1,5 +1,5 @@
 ---
-name: explorar
+name: investigar
 description: Exploração avançada de codebase, mapeamento arquitetural, auditorias e análise de viabilidade. Use para entender projetos novos, planejar refatorações complexas ou investigar integrações.
 ---
 

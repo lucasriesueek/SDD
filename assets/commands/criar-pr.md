@@ -1,5 +1,5 @@
 ---
-name: pr
+name: criar-pr
 description: Gera descrições de Pull Request seguindo padrões do projeto. Use para criar PRs bem estruturados com descrição, testes e impacto documentados.
 ---
 

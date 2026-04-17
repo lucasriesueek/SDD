@@ -8,10 +8,6 @@ const TEMPLATE_DESCRIPTIONS: Record<string, string> = {
   'REVISAO_CODIGO.md': 'Metodologia de revisao de codigo',
   'CRIAR_CARD_TASK.md': 'Template de User Stories com Acceptance Criteria',
   'PADROES_DE_PR.md': 'Padroes de Pull Request',
-  'SPEC_BUSINESS_RULES.md': 'Especificacao de regras de negocio',
-  'SPEC_API_CONTRACT.md': 'Contratos de API',
-  'SPEC_DATA_MODEL.md': 'Modelo de dados',
-  'SPEC_WORKFLOW.md': 'Workflows e processos',
 };
 
 const AGENT_DESCRIPTIONS: Record<string, string> = {
@@ -21,17 +17,20 @@ const AGENT_DESCRIPTIONS: Record<string, string> = {
   'frontend-specialist.md': 'Frontend Angular 17+, React, Vue',
   'mobile-developer.md': 'React Native e Flutter',
   'explorer-agent.md': 'Exploracao avancada de codebase',
+  'laravel-ueek-specialist.md': 'Laravel 12 + Inertia 2.x + React 19 specialist. Expertise em monolitos modernos sem APIs REST tradicionais.',
 };
 
 const COMMAND_DETAILS: Record<string, { cmd: string; desc: string }> = {
-  'arquitetura.md': { cmd: '/arquitetura', desc: 'Ver padroes, convencoes e exemplos do projeto' },
-  'card.md': { cmd: '/card', desc: 'Gerar User Story com Acceptance Criteria' },
-  'debuggar.md': { cmd: '/debuggar', desc: 'Debugging sistematico com root cause analysis' },
-  'doc.md': { cmd: '/doc', desc: 'Documentar componentes, servicos e APIs' },
-  'explorar.md': { cmd: '/explorar', desc: 'Exploracao de codebase e auditorias' },
-  'implementar.md': { cmd: '/implementar', desc: 'Criar feature baseada em referencia existente' },
-  'pr.md': { cmd: '/pr', desc: 'Gerar descricao de Pull Request' },
+  'iniciar-projeto.md': { cmd: '/iniciar-projeto', desc: 'Inicializa padroes arquiteturais investigando o codebase' },
+  'criar-card.md': { cmd: '/criar-card', desc: 'Criar User Story com Acceptance Criteria' },
+  'criar-pr.md': { cmd: '/criar-pr', desc: 'Gerar descricao de Pull Request' },
+  'criar-doc.md': { cmd: '/criar-doc', desc: 'Gerar documentacao tecnica' },
+  'diretrizes.md': { cmd: '/diretrizes', desc: 'Ver diretrizes, padroes e exemplos do projeto' },
   'revisar.md': { cmd: '/revisar', desc: 'Revisao de codigo antes do commit' },
+  'apartir.md': { cmd: '/apartir', desc: 'Criar feature baseada em referencia existente' },
+  'debuggar.md': { cmd: '/debuggar', desc: 'Debugging sistematico com root cause analysis' },
+  'investigar.md': { cmd: '/investigar', desc: 'Investigacao de codebase e auditorias' },
+  'ueek-laravel.md': { cmd: '/ueek-laravel', desc: 'Especialista Laravel + Inertia + React' },
 };
 
 export function registerListCommand(program: Command): void {

@@ -72,6 +72,13 @@ function getVersion(pkg: PackageJson, dep: string): string {
   return ver.replace(/^[\^~>=<]*/, '');
 }
 
+function getComposerVersion(composer: Record<string, any>, dep: string): string {
+  const ver = composer.require?.[dep] ?? composer['require-dev']?.[dep];
+  if (!ver) return '';
+  // Laravel usa versões como "^12.0.0"
+  return ver.replace(/^[\^~>=<]*/, '');
+}
+
 function getMainDeps(pkg: PackageJson): string[] {
   const all = { ...pkg.dependencies, ...pkg.devDependencies };
   const skip = new Set([
@@ -162,6 +169,66 @@ async function detectPythonProject(projectDir: string): Promise<ProjectInfo | nu
   };
 }
 
+async function detectPhpProject(projectDir: string): Promise<ProjectInfo | null> {
+  const composerPath = path.join(projectDir, 'composer.json');
+
+  if (await fileExists(composerPath)) {
+    const composer = await readJsonFile<Record<string, any>>(composerPath);
+    if (!composer) return null;
+
+    const allDeps = { ...composer.require ?? {}, ...composer['require-dev'] ?? {} };
+
+    // Detectar Laravel
+    if (allDeps['laravel/framework']) {
+      // Detectar Inertia no composer
+      const hasInertiaComposer = !!allDeps['inertiajs/inertia-laravel'];
+
+      // Detectar React/Vue/Svelte no package.json
+      let hasReact = false;
+      let hasVue = false;
+      let hasSvelte = false;
+
+      const pkgPath = path.join(projectDir, 'package.json');
+      if (await fileExists(pkgPath)) {
+        const pkg = await readJsonFile<PackageJson>(pkgPath);
+        if (pkg) {
+          hasReact = !!pkg.dependencies?.['react'];
+          hasVue = !!pkg.dependencies?.['vue'];
+          hasSvelte = !!pkg.dependencies?.['svelte'];
+        }
+      }
+
+      // Determinar stack frontend
+      let frontendStack = '';
+      const hasInertia = hasInertiaComposer;
+      if (hasInertia && hasReact) {
+        frontendStack = 'Inertia + React';
+      } else if (hasInertia && hasVue) {
+        frontendStack = 'Inertia + Vue';
+      } else if (hasInertia && hasSvelte) {
+        frontendStack = 'Inertia + Svelte';
+      } else if (hasInertia) {
+        frontendStack = 'Inertia';
+      }
+
+      return {
+        name: composer.name || getDirName(projectDir),
+        stack: frontendStack ? `Laravel + ${frontendStack}` : 'Laravel',
+        language: 'PHP',
+        framework: 'laravel/framework',
+        frameworkVersion: getComposerVersion(composer, 'laravel/framework'),
+        buildTool: 'Vite',
+        testRunner: 'PHPUnit',
+        packageManager: 'composer',
+        linter: 'Laravel Pint',
+        dependencies: Object.keys(allDeps).slice(0, 15),
+      };
+    }
+  }
+
+  return null;
+}
+
 async function detectOtherProjects(projectDir: string): Promise<ProjectInfo | null> {
   // Go
   if (await fileExists(path.join(projectDir, 'go.mod'))) {
@@ -217,6 +284,7 @@ async function detectOtherProjects(projectDir: string): Promise<ProjectInfo | nu
 
 export async function detectProject(projectDir: string): Promise<ProjectInfo> {
   return (
+    (await detectPhpProject(projectDir)) ||
     (await detectNodeProject(projectDir)) ||
     (await detectPythonProject(projectDir)) ||
     (await detectOtherProjects(projectDir)) || {
@@ -236,6 +304,7 @@ export async function detectProject(projectDir: string): Promise<ProjectInfo> {
 
 export const SUPPORTED_STACKS = [
   'Angular', 'React', 'Next.js', 'Vue', 'Node.js', 'NestJS',
+  'Laravel', 'Laravel + Inertia', 'Laravel + Inertia + React', 'Laravel + Inertia + Vue', 'Laravel + Inertia + Svelte',
   'Python', 'Go', 'Rust', '.NET',
 ] as const;
 

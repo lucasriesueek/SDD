@@ -110,7 +110,7 @@ name: database
 description: Gerencia migrações e queries do banco de dados
 ---
 
-Quando chamar esse comando você deve OBRIGATORIAMENTE chamar o arquivo `.claude/CONTEXT/SPEC_DATA_MODEL.md` e seguir as instruções para:
+Quando chamar esse comando você deve OBRIGATORIAMENTE chamar o arquivo `.claude/CONTEXT/PADROES_ARQUITETURA.md` e seguir as instruções para:
 
 1. Verificar se a migration segue os padrões
 2. Validar relacionamentos
@@ -184,14 +184,14 @@ Edite qualquer template em `.claude/CONTEXT/`:
 
 ### Criar Workflow Customizado
 
-Crie `.claude/CONTEXT/SPEC_MEU_WORKFLOW.md`:
+Crie `.claude/CONTEXT/MEU_WORKFLOW.md`:
 
 ```markdown
 ---
 title: "Meu Workflow Customizado"
 version: "1.0.0"
 author: "Equipe"
-tags: ["spec", "workflow", "custom"]
+tags: ["workflow", "custom"]
 ---
 
 ## 🔄 Workflow: Meu Processo

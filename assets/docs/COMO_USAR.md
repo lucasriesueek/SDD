@@ -8,12 +8,13 @@ Guia completo do Spec Driven Development para maximizar sua produtividade com Cl
 
 1. [Introducao](#1-introducao)
 2. [Visao Geral da Estrutura](#2-visao-geral-da-estrutura)
-3. [Commands - Seus Superpoderes Diretos](#3-commands---seus-superpoderes-diretos)
-4. [Agents - Automacao da IA](#4-agents---automacao-da-ia)
-5. [Dicas de Uso](#5-dicas-de-uso)
-6. [Fluxos de Trabalho Praticos](#6-fluxos-de-trabalho-praticos)
-7. [Exemplos Praticos](#7-exemplos-praticos)
-8. [Troubleshooting](#8-troubleshooting)
+3. [O Primeiro Passo - /iniciar-projeto](#3-o-primeiro-passo---iniciar-projeto)
+4. [Commands - Seus Superpoderes Diretos](#4-commands---seus-superpoderes-diretos)
+5. [Agents - Automacao da IA](#5-agents---automacao-da-ia)
+6. [Dicas de Uso](#6-dicas-de-uso)
+7. [Fluxos de Trabalho Praticos](#7-fluxos-de-trabalho-praticos)
+8. [Exemplos Praticos](#8-exemplos-praticos)
+9. [Troubleshooting](#9-troubleshooting)
 
 ---
 
@@ -41,8 +42,8 @@ Diferente de abordagens tradicionais onde voce da instrucoes vagas a IA ("crie u
 
 ### O que voce tem disponivel
 
-- **8 commands** para tarefas comuns (`/arquitetura`, `/implementar`, `/revisar`, etc.)
-- **6 agentes especializados** que a IA usa automaticamente
+- **10 commands** para tarefas comuns (`/iniciar-projeto`, `/diretrizes`, `/apartir`, `/revisar`, etc.)
+- **7 agentes especializados** que a IA usa automaticamente
 - **8 documentos de contexto** personalizados para sua stack
 - **Padroes consistentes** em todo o projeto
 
@@ -76,11 +77,7 @@ Diferente de abordagens tradicionais onde voce da instrucoes vagas a IA ("crie u
 │   ├── PADROES_ARQUITETURA.md
 │   ├── REVISAO_CODIGO.md
 │   ├── CRIAR_CARD_TASK.md
-│   ├── PADROES_DE_PR.md
-│   ├── SPEC_BUSINESS_RULES.md
-│   ├── SPEC_API_CONTRACT.md
-│   ├── SPEC_DATA_MODEL.md
-│   └── SPEC_WORKFLOW.md
+│   └── PADROES_DE_PR.md
 │
 ├── settings.json         Configuracoes do Claude Code
 ├── README.md             Guia rapido
@@ -97,12 +94,74 @@ Diferente de abordagens tradicionais onde voce da instrucoes vagas a IA ("crie u
 
 ---
 
-## 3. Commands - Seus Superpoderes Diretos
+## 3. O Primeiro Passo - /iniciar-projeto
+
+> **Antes de usar qualquer outro command, execute este!**
+
+### O que e
+
+O `/iniciar-projeto` e o command que **inicializa os padroes arquiteturais** do seu projeto investigando o codigo existente.
+
+### Quando usar
+
+- **Imediatamente apos** instalar o SDD (`sdd-ueek init`)
+- Quando quiser **atualizar** os padroes documentados
+- Quando o projeto sofrer **mudancas arquiteturais significativas**
+
+### Como funciona
+
+```
+/iniciar-projeto
+```
+
+**O que acontece:**
+
+1. **Investigacao automatica** - A IA analisa seu codigo para descobrir padroes reais
+2. **Catalogacao de convencoes** - Documenta convencoes de nomenclatura especificas
+3. **Identificacao de preferencias** - Descobre preferencias de codigo do projeto
+4. **Geracao de guia personalizado** - Cria um guia unico para seu time
+
+### Exemplo de saida
+
+```
+🔍 Iniciando investigacao do projeto...
+
+[20%] 🔍 Analisando estrutura de componentes...
+✓ Encontrados 47 componentes Angular
+✓ 45 usam OnPush, 2 usam Default
+✓ 100% usam inject() para DI
+
+[40%] 🔍 Analisando convencoes de nomenclatura...
+✓ Componentes: PascalCase + sufixo Component
+✓ Services: PascalCase + sufixo Service
+✓ Interfaces: PascalCase (sem prefixo I)
+
+[60%] 🔍 Mapeando estrutura de diretorios...
+✓ Estrutura: core/, features/, shared/
+
+[80%] 🔍 Identificando padroes de HTTP...
+✓ Usam HttpClient com interceptors
+✓ Repositories padrao para acesso a dados
+
+[100%] ✅ PADROES_ARQUITETURA.md inicializado!
+```
+
+### Por que importante
+
+| Sem /iniciar-projeto | Com /iniciar-projeto |
+|---------------------|---------------------|
+| Padroes genericos | Padroes especificos do seu projeto |
+| Exemplos teoricos | Exemplos reais do seu codigo |
+| Pode nao se aplicar | 100% aplicavel ao seu time |
+
+---
+
+## 4. Commands - Seus Superpoderes Diretos
 
 > **Conceito chave:** Commands sao atalhos que voce controla. Digite `/nome` e acontece!
 > Diferente dos agents (que a IA decide quando usar), Commands estao sob seu **controle total**.
 
-### /arquitetura - O Arquiteto do Projeto
+### /diretrizes - O Arquiteto do Projeto
 
 **Para que serve:** Saber como algo funciona no projeto.
 
@@ -114,7 +173,7 @@ Diferente de abordagens tradicionais onde voce da instrucoes vagas a IA ("crie u
 
 **Exemplo:**
 ```
-/arquitetura
+/diretrizes
 Como devo criar um formulario seguindo os padroes do projeto?
 ```
 
@@ -122,7 +181,7 @@ Como devo criar um formulario seguindo os padroes do projeto?
 
 ---
 
-### /implementar - O Construtor
+### /apartir - O Construtor
 
 **Para que serve:** Clonar uma feature existente para criar uma nova com consistencia.
 
@@ -133,7 +192,7 @@ Como devo criar um formulario seguindo os padroes do projeto?
 
 **Exemplo:**
 ```
-/implementar
+/apartir
 Crie "gestao de produtos" seguindo o padrao de "gestao de clientes"
 ```
 
@@ -161,37 +220,37 @@ Revise minhas mudancas staged.
 
 ---
 
-### /card - O Organizador do Backlog
+### /criar-card - O Organizador do Backlog
 
 **Para que serve:** Criar User Stories completas com Acceptance Criteria.
 
 **Exemplo:**
 ```
-/card
+/criar-card
 Crie um card para essa funcionalidade de filtro de usuarios.
 ```
 
 ---
 
-### /pr - O Comunicador
+### /criar-pr - O Comunicador
 
 **Para que serve:** Gerar descricoes de PR profissionais.
 
 **Exemplo:**
 ```
-/pr
+/criar-pr
 Gere descricao de PR para minhas mudancas atuais.
 ```
 
 ---
 
-### /doc - O Documentador
+### /criar-doc - O Documentador
 
 **Para que serve:** Documentacao automatica de codigo, APIs e componentes.
 
 **Exemplo:**
 ```
-/doc
+/criar-doc
 Documente o componente de UserService.
 ```
 
@@ -214,13 +273,13 @@ Passos: 1. Registrar 2. Tentar login 3. Erro 500
 
 ---
 
-### /explorar - O Explorador
+### /investigar - O Investigador
 
-**Para que serve:** Exploracao de codebase, mapeamento arquitetural, auditorias.
+**Para que serve:** Investigacao de codebase, mapeamento arquitetural, auditorias.
 
 **Exemplo:**
 ```
-/explorar
+/investigar
 Faca uma auditoria completa do projeto.
 ```
 
@@ -228,7 +287,7 @@ Faca uma auditoria completa do projeto.
 
 ---
 
-## 4. Agents - Automacao da IA
+## 5. Agents - Automacao da IA
 
 > **Conceito chave:** Agents sao especialistas que a IA usa automaticamente.
 > Voce **nao precisa chama-los diretamente** - o Claude decide quando usar.
@@ -251,19 +310,28 @@ React Native e Flutter. Ativado quando detecta projeto mobile.
 ### explorer-agent
 Exploracao e descoberta avancada de codebase. Ativado para analise arquitetural profunda.
 
+### laravel-ueek-specialist
+Especialista em Laravel 12 + Inertia 2.x + React 19. Meta-agente que consulta
+documentacao de padroes para orientacao precisa em monolitos modernos.
+Ativado quando detecta tarefas envolvendo Laravel, Inertia, PHP, Blade ou Livewire.
+
 ---
 
-## 5. Dicas de Uso
+## 6. Dicas de Uso
 
 ### Para Comecar Agora
 
 ```
+Passo 0: Inicialize os padroes do projeto (PRIMEIRO!)
+/iniciar-projeto
+→ A IA investiga seu codigo e cria guia personalizado
+
 Passo 1: Entenda os padroes do projeto
-/arquitetura
+/diretrizes
 → "Quais sao os padroes principais que devo seguir?"
 
 Passo 2: Implemente sua primeira feature
-/implementar
+/apartir
 → "Crie [sua feature] seguindo o padrao de [feature existente]"
 
 Passo 3: Revise antes de commitar
@@ -274,10 +342,10 @@ Passo 3: Revise antes de commitar
 ### Como Combinar Commands
 
 ```
-Nova Feature:   /arquitetura → /implementar → /revisar → /pr
-Bug Fix:        /debuggar → /arquitetura → /revisar → /card
-Code Review:    /revisar → /arquitetura → /pr
-Documentacao:   /doc → /revisar
+Nova Feature:   /diretrizes → /apartir → /revisar → /criar-pr
+Bug Fix:        /debuggar → /diretrizes → /revisar → /criar-card
+Code Review:    /revisar → /diretrizes → /criar-pr
+Documentacao:   /criar-doc → /revisar
 ```
 
 ### Boas Praticas
@@ -286,7 +354,7 @@ Documentacao:   /doc → /revisar
 |-------------|---------|
 | Seja especifico nos prompts | IA gera solucoes melhores |
 | Sempre use /revisar antes de commit | Pega bugs cedo |
-| Use /arquitetura antes de implementar | Garante consistencia |
+| Use /diretrizes antes de implementar | Garante consistencia |
 | Documente conforme desenvolve | Evita divida tecnica |
 | Combine commands em sequencia | Resultado completo |
 
@@ -296,50 +364,57 @@ Documentacao:   /doc → /revisar
 |------|-------------|
 | Prompts vagos | Seja especifico: "Crie X com Y seguindo padrao Z" |
 | Nao revisar antes de commit | Sempre use `/revisar` |
-| Ignorar padroes | Use `/arquitetura` primeiro |
+| Ignorar padroes | Use `/diretrizes` primeiro |
 | Nao dar contexto | Inclua stack, versoes, comportamento esperado |
 
 ---
 
-## 6. Fluxos de Trabalho Praticos
+## 7. Fluxos de Trabalho Praticos
+
+### Primeira Configuracao
+
+```
+1. sdd-ueek init           → Instala o SDD no projeto
+2. /iniciar-projeto        → IA investiga e inicializa padroes
+```
 
 ### Nova Feature
 
 ```
-1. /arquitetura → "Como estruturar um modulo de [feature]?"
-2. /implementar → "Implemente [feature] seguindo o padrao de [feature similar]"
+1. /diretrizes → "Como estruturar um modulo de [feature]?"
+2. /apartir → "Implemente [feature] seguindo o padrao de [feature similar]"
 3. /revisar → "Revise minhas mudancas"
-4. /card → "Documente essa feature"
-5. /pr → "Gere descricao de PR"
+4. /criar-card → "Documente essa feature"
+5. /criar-pr → "Gere descricao de PR"
 ```
 
 ### Bug Complexo
 
 ```
 1. /debuggar → "Bug: [descricao com passos para reproduzir]"
-2. /arquitetura → "Como lidar com [X] seguindo os padroes?"
+2. /diretrizes → "Como lidar com [X] seguindo os padroes?"
 3. /revisar → "Revise o fix aplicado"
-4. /card → "Documente o bug e a solucao"
+4. /criar-card → "Documente o bug e a solucao"
 ```
 
 ### Code Review
 
 ```
 1. /revisar → "Revise todas as mudancas staged"
-2. /arquitetura → "Essa implementacao segue os padroes?"
-3. /pr → "Gere feedback estruturado"
+2. /diretrizes → "Essa implementacao segue os padroes?"
+3. /criar-pr → "Gere feedback estruturado"
 ```
 
 ---
 
-## 7. Exemplos Praticos
+## 8. Exemplos Praticos
 
 ### Criar Novo Componente
 
 ```
 Ruim: "Crie um componente de formulario"
 
-Bom: /implementar
+Bom: /apartir
 Crie um formulario de contato seguindo o mesmo padrao
 do formulario de registro (RegistrationFormComponent).
 Use Reactive Forms com validacao e OnPush change detection.
@@ -361,7 +436,7 @@ Stack: Angular 17, Signals, OnPush
 ### Gerar Documentacao
 
 ```
-Bom: /doc
+Bom: /criar-doc
 Documente o UserService incluindo:
 1. Descricao do proposito
 2. Parametros e retornos (com tipos)
@@ -371,7 +446,7 @@ Documente o UserService incluindo:
 
 ---
 
-## 8. Troubleshooting
+## 9. Troubleshooting
 
 ### Commands nao funcionam?
 
@@ -390,7 +465,7 @@ Documente o UserService incluindo:
 Edite os arquivos diretamente:
 ```bash
 code .claude/CONTEXT/PADROES_ARQUITETURA.md
-code .claude/commands/implementar.md
+code .claude/commands/apartir.md
 ```
 
 Para restaurar os originais: `npx sdd-ueek init`

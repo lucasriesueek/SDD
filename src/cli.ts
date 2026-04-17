@@ -95,7 +95,7 @@ ${buildHelpBanner()}
   ${chalk.bold('O que o SDD cria no seu projeto:')}
     ${chalk.cyan('.claude/agents/')}     Assistentes especializados (debug, review, doc)
     ${chalk.cyan('.claude/commands/')}    8 comandos /xxx para usar no Claude Code
-    ${chalk.cyan('.claude/CONTEXT/')}     Templates de specs e padroes da stack
+    ${chalk.cyan('.claude/CONTEXT/')}     Templates de padroes da stack
 `);
 
 program.addHelpText('after', `

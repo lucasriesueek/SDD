@@ -8,8 +8,8 @@ Bem-vindo ao **Spec Driven Development**! Esta pasta `.claude/` foi configurada 
 
 ```
 .claude/
-├── agents/          6 agentes especializados (auto-ativados pelo Claude)
-├── commands/        8 comandos que voce chama via /nome
+├── agents/          7 agentes especializados (auto-ativados pelo Claude)
+├── commands/        9 comandos que voce chama via /nome
 ├── CONTEXT/         Documentos de contexto personalizados para sua stack
 ├── settings.json    Configuracao do status line
 ├── README.md        Voce esta aqui
@@ -26,14 +26,15 @@ Digite `/nome` no Claude Code e descreva o que precisa:
 
 | Command | Para que serve |
 |---------|---------------|
-| `/arquitetura` | Ver padroes, convencoes e exemplos do projeto |
-| `/implementar` | Criar feature baseada em referencia existente |
+| `/criar-card` | Gerar User Story com Acceptance Criteria |
+| `/criar-pr` | Gerar descricao de Pull Request |
+| `/criar-doc` | Documentar componentes, servicos, APIs |
+| `/diretrizes` | Ver diretrizes, padroes e exemplos do projeto |
 | `/revisar` | Revisar codigo antes do commit |
-| `/card` | Gerar User Story com Acceptance Criteria |
-| `/pr` | Gerar descricao de Pull Request |
-| `/doc` | Documentar componentes, servicos, APIs |
+| `/apartir` | Criar feature baseada em referencia existente |
 | `/debuggar` | Debugging sistatico com root cause analysis |
-| `/explorar` | Explorar codebase, auditorias, analise de viabilidade |
+| `/investigar` | Explorar codebase, auditorias, analise de viabilidade |
+| `/ueek-laravel` | Especialista Laravel + Inertia + React |
 
 ### Agents (o Claude decide)
 
@@ -45,17 +46,17 @@ O Claude ativa automaticamente o agente certo quando detecta a necessidade. Voce
 
 **Nova feature:**
 ```
-/arquitetura → /implementar → /revisar → /pr
+/diretrizes → /apartir → /revisar → /criar-pr
 ```
 
 **Bug fix:**
 ```
-/debuggar → /arquitetura → /revisar → /card
+/debuggar → /diretrizes → /revisar → /criar-card
 ```
 
 **Code review:**
 ```
-/revisar → /arquitetura → /pr
+/revisar → /diretrizes → /criar-pr
 ```
 
 ---
@@ -63,8 +64,8 @@ O Claude ativa automaticamente o agente certo quando detecta a necessidade. Voce
 ## Primeiros passos
 
 1. Abra o Claude Code neste projeto
-2. Digite `/arquitetura` para ver os padroes do projeto
-3. Use `/implementar` para criar sua primeira feature
+2. Digite `/diretrizes` para ver os padroes do projeto
+3. Use `/apartir` para criar sua primeira feature
 4. Sempre use `/revisar` antes de commitar
 
 Para exemplos detalhados e dicas avancadas, leia [COMO_USAR.md](COMO_USAR.md).

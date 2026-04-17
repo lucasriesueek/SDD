@@ -11,33 +11,32 @@ SDD/
 ├── INSTALAR_SDD.md              # ⭐ Arquivo principal de instalação
 ├── VERSION.md                   # Controle de versão
 │
-├── agents/                      # Agentes especializados (6 arquivos)
+├── agents/                      # Agentes especializados (7 arquivos)
 │   ├── code-archaeologist.md    # Análise de código legado
 │   ├── debugger.md              # Debugging sistemático
 │   ├── documentation-writer.md  # Documentação técnica
 │   ├── explorer-agent.md        # Exploração e análise de codebase
 │   ├── frontend-specialist.md   # Frontend Angular 17+
+│   ├── laravel-ueek-specialist.md # Laravel 12 + Inertia + React meta-agent
 │   └── mobile-developer.md      # React Native e Flutter
 │
-├── commands/                    # Skills/Commands (8 arquivos)
-│   ├── doc.md                   # Geração de documentação
-│   ├── card.md                  # Criação de User Stories
-│   ├── pr.md                    # Padrões de Pull Request
+├── commands/                    # Skills/Commands (10 arquivos)
+│   ├── iniciar-projeto.md       # Inicialização de padrões arquiteturais
+│   ├── criar-card.md            # Criação de User Stories
+│   ├── criar-pr.md              # Padrões de Pull Request
+│   ├── criar-doc.md             # Geração de documentação
+│   ├── diretrizes.md            # Diretrizes arquiteturais
 │   ├── revisar.md               # Revisão de código
-│   ├── implementar.md           # Implementação de features
-│   ├── arquitetura.md           # Diretrizes arquiteturais
+│   ├── apartir.md               # Implementação de features
 │   ├── debuggar.md              # Debugging sistemático
-│   └── explorar.md              # Exploração e análise de codebase
+│   ├── investigar.md            # Exploração e análise de codebase
+│   └── ueek-laravel.md          # Especialista Laravel + Inertia + React
 │
-├── templates/                   # Templates de documentos (8 arquivos)
+├── templates/                   # Templates de documentos (4 arquivos)
 │   ├── PADROES_ARQUITETURA.md   # Padrões arquiteturais (EXPANDIDO)
 │   ├── REVISAO_CODIGO.md        # Revisão de código (EXPANDIDO)
 │   ├── CRIAR_CARD_TASK.md       # Criação de cards (EXPANDIDO)
-│   ├── PADROES_DE_PR.md         # Padrões de PR (EXPANDIDO)
-│   ├── SPEC_BUSINESS_RULES.md   # Regras de negócio (NOVO)
-│   ├── SPEC_API_CONTRACT.md     # Contratos de API (NOVO)
-│   ├── SPEC_DATA_MODEL.md       # Modelo de dados (NOVO)
-│   └── SPEC_WORKFLOW.md         # Workflows/processos (NOVO)
+│   └── PADROES_DE_PR.md         # Padrões de PR (EXPANDIDO)
 │
 └── docs/                        # Documentação do SDD
     ├── ESTRUTURA.md             # Este arquivo
@@ -89,41 +88,54 @@ SDD/
 **Propósito:** Exploração avançada de codebase e análise arquitetural
 **Use para:** Mapear projetos novos, auditorias, análise de viabilidade, refatorações complexas
 
+#### laravel-ueek-specialist.md
+**Propósito:** Meta-agente para Laravel 12 + Inertia 2.x + React 19
+**Use para:** Desenvolvimento em monolitos modernos, consulta de padrões Laravel/Inertia
+**Ativado por:** laravel, inertia, php, blade, livewire
+
 ---
 
 ### commands/
 
-#### doc.md
-**Use:** `/doc`
-**Ação:** Gera documentação seguindo templates
+#### iniciar-projeto.md
+**Use:** `/iniciar-projeto`
+**Ação:** Investiga o codebase e inicializa PADROES_ARQUITETURA.md
 
-#### card.md
-**Use:** `/card`
+#### criar-card.md
+**Use:** `/criar-card`
 **Ação:** Cria User Stories com AC e DoD
 
-#### pr.md
-**Use:** `/pr`
+#### criar-pr.md
+**Use:** `/criar-pr`
 **Ação:** Gera descrição de Pull Request
+
+#### criar-doc.md
+**Use:** `/criar-doc`
+**Ação:** Gera documentação seguindo templates
+
+#### diretrizes.md
+**Use:** `/diretrizes`
+**Ação:** Consulta padrões arquiteturais
 
 #### revisar.md
 **Use:** `/revisar`
 **Ação:** Revisa staged changes
 
-#### implementar.md
-**Use:** `/implementar`
+#### apartir.md
+**Use:** `/apartir`
 **Ação:** Implementa nova feature baseada em feature de referência
 
 #### debuggar.md
 **Use:** `/debuggar`
 **Ação:** Debugging sistemático (usa debugger agent)
 
-#### explorar.md
-**Use:** `/explorar`
+#### investigar.md
+**Use:** `/investigar`
 **Ação:** Exploração e análise de codebase (usa explorer-agent)
 
-#### arquitetura.md
-**Use:** `/arquitetura`
-**Ação:** Consulta padrões arquiteturais
+#### ueek-laravel.md
+**Use:** `/ueek-laravel`
+**Ação:** Especialista Laravel + Inertia + React
 
 ---
 
@@ -169,50 +181,6 @@ SDD/
 - Títulos e emojis
 - Templates por tipo
 - Checklists
-
-#### SPEC_BUSINESS_RULES.md (NOVO)
-**Propósito:** Especificação de regras de negócio
-**Destino:** `.claude/CONTEXT/SPEC_BUSINESS_RULES.md`
-
-**Contém:**
-- Glossário de termos
-- Regras em formato Given/When/Then
-- Invariantes
-- Casos de borda
-- Validações com exemplos de código
-
-#### SPEC_API_CONTRACT.md (NOVO)
-**Propósito:** Contratos de API
-**Destino:** `.claude/CONTEXT/SPEC_API_CONTRACT.md`
-
-**Contém:**
-- Endpoints documentados
-- Contratos request/response
-- Códigos de status
-- Autenticação
-- Exemplos em curl/TypeScript
-
-#### SPEC_DATA_MODEL.md (NOVO)
-**Propósito:** Modelo de dados
-**Destino:** `.claude/CONTEXT/SPEC_DATA_MODEL.md`
-
-**Contém:**
-- Diagrama ER (descrito)
-- Entidades com atributos
-- Relacionamentos
-- Índices e performance
-- Exemplos de queries
-
-#### SPEC_WORKFLOW.md (NOVO)
-**Propósito:** Workflows e processos
-**Destino:** `.claude/CONTEXT/SPEC_WORKFLOW.md`
-
-**Contém:**
-- Fluxogramas (descritos)
-- Estados do workflow
-- Transições possíveis
-- Handlers por estado
-- Exemplos de código
 
 ---
 

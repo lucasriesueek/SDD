@@ -104,19 +104,21 @@ sdd-cli/
 │   ├── PADROES_ARQUITETURA.md
 │   ├── PADROES_DE_PR.md
 │   ├── REVISAO_CODIGO.md
-│   ├── SPEC_API_CONTRACT.md
-│   ├── SPEC_BUSINESS_RULES.md
-│   ├── SPEC_DATA_MODEL.md
-│   ├── SPEC_WORKFLOW.md
 │   └── CRIAR_CARD_TASK.md
 ├── agents/                  # Templates de agentes
 │   ├── code-archaeologist.md
 │   ├── debugger.md
 │   └── ...
 ├── commands/                # Templates de comandos
-│   ├── arquitetura.md
-│   ├── card.md
-│   └── ...
+│   ├── criar-card.md
+│   ├── criar-pr.md
+│   ├── criar-doc.md
+│   ├── diretrizes.md
+│   ├── revisar.md
+│   ├── apartir.md
+│   ├── debuggar.md
+│   ├── investigar.md
+│   └── ueek-laravel.md
 ├── tsconfig.json
 ├── tsup.config.ts
 ├── package.json
@@ -755,13 +757,13 @@ async function processTemplate(
 
 // Uso:
 await processTemplate(
-  path.join(templatesDir, 'SPEC_API_CONTRACT.md'),
+  path.join(templatesDir, 'PADROES_ARQUITETURA.md'),
   {
     PROJECT_NAME: 'meu-app',
     STACK: 'angular',
     DATE: new Date().toISOString().split('T')[0],
   },
-  path.join(targetDir, '.claude/specs/SPEC_API_CONTRACT.md')
+  path.join(targetDir, '.claude/CONTEXT/PADROES_ARQUITETURA.md')
 );
 ```
 

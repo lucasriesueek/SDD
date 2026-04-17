@@ -43,13 +43,13 @@ describe('sdd CLI', () => {
     expect(settings.statusLine.command).toContain('angular');
 
     const agents = await fse.readdir(path.join(projectDir, '.claude', 'agents'));
-    expect(agents.length).toBe(6);
+    expect(agents.length).toBe(7);
 
     const commands = await fse.readdir(path.join(projectDir, '.claude', 'commands'));
-    expect(commands.length).toBe(8);
+    expect(commands.length).toBe(10);
 
     const context = await fse.readdir(path.join(projectDir, '.claude', 'CONTEXT'));
-    expect(context.length).toBe(8);
+    expect(context.length).toBe(4);
   });
 
   it('should create properly processed templates', async () => {
@@ -70,5 +70,24 @@ describe('sdd CLI', () => {
     // Angular-only conditional content should NOT be present
     expect(archContent).not.toContain('{{#if');
     expect(archContent).not.toContain('{{NOME_PROJETO}}');
+  });
+
+  it('should list commands with new standardized names', async () => {
+    const { stdout } = await execa('node', [cliPath, 'list', 'commands']);
+
+    // Novos nomes com prefixo criar-
+    expect(stdout).toContain('/criar-card');
+    expect(stdout).toContain('/criar-pr');
+    expect(stdout).toContain('/criar-doc');
+
+    // Novos nomes renomeados
+    expect(stdout).toContain('/diretrizes');
+    expect(stdout).toContain('/apartir');
+    expect(stdout).toContain('/investigar');
+
+    // Mantidos iguais
+    expect(stdout).toContain('/revisar');
+    expect(stdout).toContain('/debuggar');
+    expect(stdout).toContain('/ueek-laravel');
   });
 });

@@ -2,7 +2,11 @@ import path from 'node:path';
 import fse from 'fs-extra';
 import type { ProjectInfo } from './detector.js';
 import { processTemplate, buildVariables, type TemplateVariables } from './template-engine.js';
-import { AGENTS_DIR, COMMANDS_DIR, TEMPLATES_DIR, DOCS_DIR, listMdFiles, fileExists } from '../utils/file-utils.js';
+import { AGENTS_DIR, COMMANDS_DIR, TEMPLATES_DIR, DOCS_DIR, PKG_ROOT, listMdFiles, fileExists } from '../utils/file-utils.js';
+
+/** Laravel-specific documentation filename */
+const LARAVEL_DOC_NAME = 'LARAVEL_INERTIA_REACT_STANDARDS.md';
+const LARAVEL_DOC_PATH = path.join(PKG_ROOT, 'docs', LARAVEL_DOC_NAME);
 
 export interface ScaffoldOptions {
   projectDir: string;
@@ -43,6 +47,14 @@ async function copyWithOverwriteCheck(
   }
   await fse.copy(src, dest, { overwrite: true });
   return true;
+}
+
+/**
+ * Check if Laravel-specific documentation should be copied
+ */
+function shouldCopyLaravelDoc(info: ProjectInfo): boolean {
+  const stackLower = info.stack.toLowerCase();
+  return stackLower.includes('laravel');
 }
 
 export async function scaffold(options: ScaffoldOptions): Promise<ScaffoldResult> {
@@ -124,6 +136,19 @@ export async function scaffold(options: ScaffoldOptions): Promise<ScaffoldResult
     const dest = path.join(claudeDir, file);
     const content = await fse.readFile(src, 'utf-8');
     await fse.writeFile(dest, content, 'utf-8');
+  }
+
+  // Copy Laravel-specific documentation to .claude/CONTEXT/ if applicable
+  if (shouldCopyLaravelDoc(info) && options.installTemplates) {
+    const contextDir = path.join(claudeDir, 'CONTEXT');
+    await fse.ensureDir(contextDir);
+
+    if (await fileExists(LARAVEL_DOC_PATH)) {
+      const laravelDocDest = path.join(contextDir, LARAVEL_DOC_NAME);
+      const content = await fse.readFile(LARAVEL_DOC_PATH, 'utf-8');
+      await fse.writeFile(laravelDocDest, content, 'utf-8');
+      // Note: Not adding to result as it's not a processed template
+    }
   }
 
   return result;

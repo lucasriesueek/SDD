@@ -1,5 +1,5 @@
 ---
-name: card
+name: criar-card
 description: Cria User Stories e cards baseados em staged changes ou features. Use para documentar requisitos, acceptance criteria e definition of done para tarefas.
 ---
 

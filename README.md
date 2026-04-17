@@ -30,7 +30,7 @@ O SDD-Ueek cria dentro de `.claude/`:
 | O que | Quantidade | O que faz |
 |-------|-----------|-----------|
 | **Commands** | 8 | Skills que voce chama via `/nome` |
-| **Agents** | 6 | Especialistas que o Claude usa automaticamente |
+| **Agents** | 7 | Especialistas que o Claude usa automaticamente |
 | **Templates de contexto** | 8 | Documentos personalizados para sua stack |
 
 ---
@@ -68,14 +68,16 @@ Voce chama diretamente no Claude Code. Controle total.
 
 | Command | O que faz |
 |---------|----------|
-| `/arquitetura` | Mostra padroes do projeto, convencoes e exemplos de codigo |
-| `/implementar` | Cria feature nova baseada em uma referencia existente |
+| `/iniciar-projeto` | Inicializa padroes arquiteturais investigando o codebase |
+| `/criar-card` | Gera User Story com Acceptance Criteria |
+| `/criar-pr` | Gera descricao de Pull Request |
+| `/criar-doc` | Documenta componentes, servicos, APIs |
+| `/diretrizes` | Mostra padroes do projeto, convencoes e exemplos de codigo |
 | `/revisar` | Revisa codigo antes do commit (seguranca, padroes, performance) |
-| `/card` | Gera User Story com Acceptance Criteria |
-| `/pr` | Gera descricao de Pull Request |
-| `/doc` | Documenta componentes, servicos, APIs |
+| `/apartir` | Cria feature nova baseada em uma referencia existente |
 | `/debuggar` | Debugging sistematico com root cause analysis |
-| `/explorar` | Exploracao de codebase, auditorias e analise de viabilidade |
+| `/investigar` | Exploracao de codebase, auditorias e analise de viabilidade |
+| `/ueek-laravel` | Especialista Laravel + Inertia + React |
 
 ---
 
@@ -91,6 +93,7 @@ O Claude ativa automaticamente quando detecta a necessidade.
 | `frontend-specialist` | Trabalho com UI, componentes, Angular/React |
 | `mobile-developer` | Projetos React Native ou Flutter |
 | `explorer-agent` | Exploracao de codebase, auditorias arquiteturais e analise de viabilidade |
+| `laravel-ueek-specialist` | Stack Laravel 12 + Inertia 2.x + React 19 (monolitos modernos) |
 
 ---
 
@@ -102,19 +105,24 @@ Angular 17+, React, Next.js, Vue, Node.js (Express/Fastify/NestJS), Python (Fast
 
 ## Fluxos recomendados
 
+**Primeira configuracao:**
+```
+sdd-ueek init → /iniciar-projeto
+```
+
 **Nova feature:**
 ```
-/arquitetura → /implementar → /revisar → /pr
+/diretrizes → /apartir → /revisar → /criar-pr
 ```
 
 **Bug fix:**
 ```
-/debuggar → /arquitetura → /revisar → /card
+/debuggar → /diretrizes → /revisar → /criar-card
 ```
 
 **Code review:**
 ```
-/revisar → /arquitetura → /pr
+/revisar → /diretrizes → /criar-pr
 ```
 
 ---

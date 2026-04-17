@@ -26,6 +26,18 @@ describe('detector', () => {
     expect(info.frameworkVersion).toBe('18.2.0');
   });
 
+  it('should detect Laravel + Inertia + React project', async () => {
+    const info = await detectProject(path.join(fixtures, 'laravel-inertia-react'));
+    expect(info.stack).toBe('Laravel + Inertia + React');
+    expect(info.framework).toBe('laravel/framework');
+    expect(info.language).toBe('PHP');
+    expect(info.name).toBe('test/laravel-inertia-react');
+    expect(info.buildTool).toBe('Vite');
+    expect(info.testRunner).toBe('PHPUnit');
+    expect(info.packageManager).toBe('composer');
+    expect(info.linter).toBe('Laravel Pint');
+  });
+
   it('should return empty stack for unknown project', async () => {
     const info = await detectProject(path.join(fixtures, 'unknown-project'));
     expect(info.stack).toBe('');

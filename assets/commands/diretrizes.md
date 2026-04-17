@@ -1,5 +1,5 @@
 ---
-name: arquitetura
+name: diretrizes
 description: Diretrizes arquiteturais e padrões do projeto. Use para consultar padrões de código, convenções e melhores práticas específicas da stack do projeto.
 ---
 

@@ -17,7 +17,13 @@
       "Bash(findstr /i sdd)",
       "Bash(npm cache:*)",
       "Bash(tar -tzf sdd-ueek-2.2.0.tgz)",
-      "Bash(tar -xzf sdd-ueek-2.2.0.tgz)"
+      "Bash(tar -xzf sdd-ueek-2.2.0.tgz)",
+      "Bash(wc -l \"/c/Users/dispo/OneDrive/Documentos/UEEK/Projetos/Quiron/Discovery/Quiron.Discovery.Portal/.claude/agents/\"*.md)",
+      "Bash(mv card.md criar-card.md)",
+      "Bash(mv pr.md criar-pr.md)",
+      "Bash(mv doc.md criar-doc.md)",
+      "Bash(mv arquitetura.md diretrizes.md)",
+      "Bash(mv implementar.md apartir.md)"
     ]
   }
 }

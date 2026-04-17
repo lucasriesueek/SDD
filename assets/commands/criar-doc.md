@@ -1,5 +1,5 @@
 ---
-name: doc
+name: criar-doc
 description: Gera documentação completa do projeto. Use para documentar arquitetura, APIs, componentes e guias de uso. Suporta README, API docs, e documentação técnica.
 ---
 
