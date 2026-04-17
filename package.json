@@ -5,7 +5,7 @@
   "type": "module",
   "main": "dist/cli.js",
   "bin": {
-    "sdd-ueek": "./dist/cli.js"
+    "sdd-ueek": "dist/cli.js"
   },
   "files": [
     "dist",
