@@ -1,16 +1,24 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { confirm } from '@inquirer/prompts';
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { registerInitCommand, runInit } from './commands/init.js';
 import { registerListCommand } from './commands/list.js';
 import { printWelcomeBanner } from './utils/logger.js';
+
+// Ler versão dinamicamente do package.json
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const packageJson = readFileSync(join(__dirname, '../package.json'), 'utf-8');
+const { version } = JSON.parse(packageJson);
 
 const program = new Command();
 
 program
   .name('sdd-ueek')
   .description('SDD-Ueek - Spec Driven Development CLI')
-  .version('2.1.0');
+  .version(version);
 
 registerInitCommand(program);
 registerListCommand(program);
@@ -50,7 +58,7 @@ function buildHelpBanner(): string {
     ' \\___/|_____|_____|_|\\_\\',
   ];
 
-  const subtitle = 'Spec Driven Development CLI v2.1';
+  const subtitle = `Spec Driven Development CLI v${version}`;
   const tagline = 'Configure seu projeto para AI-assisted development';
 
   function centerPad(visibleText: string, visibleLen: number): string {
