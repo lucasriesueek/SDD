@@ -1,6 +1,6 @@
 {
   "name": "sdd-ueek",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Spec Driven Development - CLI tool to scaffold AI-ready specs, agents and commands for Claude Code",
   "type": "module",
   "main": "dist/cli.js",

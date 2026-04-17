@@ -147,4 +147,4 @@ npm link          # Criar link global para testar localmente
 
 ---
 
-**Versao 2.1.0** | [npm](https://www.npmjs.com/package/sdd-ueek) | SDD Team
+**Versao 2.3.0** | [npm](https://www.npmjs.com/package/sdd-ueek) | SDD Team
